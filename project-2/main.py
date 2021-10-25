@@ -28,11 +28,6 @@ class DFA:
         return self.table[current][input_ch]
 
 
-
-    
-    
-
-
 # integer numbers detection
 table_num_dec = {
     'A' : {'0' : 'C', '1' : 'B','2' : 'B','3' : 'B','4' : 'B','5' : 'B','6' : 'B','7' : 'B','8' : 'B','9' : 'B','AW':'TRAP'},
