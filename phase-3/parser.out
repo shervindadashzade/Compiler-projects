@@ -1,0 +1,2319 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COL
+    COM
+    IS
+    LAND
+    NAME
+    NEWLINE
+    PERC
+    QUOT
+    RETURN
+    SLBRAC
+    SRBRAC
+    THEN
+
+Grammar
+
+Rule 0     S' -> stmt_list
+Rule 1     stmt_list -> stmt
+Rule 2     stmt_list -> stmt_list stmt
+Rule 3     stmt -> include
+Rule 4     stmt -> vardec
+Rule 5     stmt -> assaign
+Rule 6     stmt -> if
+Rule 7     stmt -> while
+Rule 8     stmt -> do_while
+Rule 9     stmt -> for
+Rule 10    include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+Rule 11    types -> INT
+Rule 12    types -> FLOAT
+Rule 13    types -> CHAR
+Rule 14    values -> NUMBER DOT NUMBER
+Rule 15    values -> NUMBER
+Rule 16    values -> CHARV
+Rule 17    vardec -> types ID vardec2
+Rule 18    vardec2 -> SEMI
+Rule 19    vardec2 -> EQUALS others_vardec2
+Rule 20    others_vardec2 -> values SEMI
+Rule 21    others_vardec2 -> exp SEMI
+Rule 22    exp -> exp PLUS term
+Rule 23    exp -> exp MINUS term
+Rule 24    exp -> term
+Rule 25    term -> term TIMES factor
+Rule 26    term -> term DIVIDE factor
+Rule 27    term -> term POW factor
+Rule 28    term -> factor
+Rule 29    factor -> NUMBER
+Rule 30    factor -> ID
+Rule 31    factor -> LPAREN exp RPAREN
+Rule 32    con_exp -> con_exp ALBRAC other_con_exp
+Rule 33    con_exp -> con_exp ARBRAC other_con_exp
+Rule 34    con_exp -> con_exp EQUALS EQUALS other_con_exp
+Rule 35    con_exp -> con_exp NOT other_con_term2
+Rule 36    con_exp -> con_term
+Rule 37    other_con_exp -> con_term
+Rule 38    other_con_exp -> EQUALS con_term
+Rule 39    other_con_term2 -> ALBRAC other_con_exp
+Rule 40    other_con_term2 -> ARBRAC other_con_exp
+Rule 41    other_con_term2 -> other_con_exp
+Rule 42    con_term -> ID
+Rule 43    con_term -> NUMBER
+Rule 44    con_term -> LPAREN con_exp RPAREN
+Rule 45    con_term -> FALSE
+Rule 46    con_term -> TRUE
+Rule 47    assaign -> ID EQUALS other_assaign
+Rule 48    other_assaign -> values SEMI
+Rule 49    other_assaign -> exp SEMI
+Rule 50    if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+Rule 51    others_if -> RBRAC
+Rule 52    others_if -> RBRAC ELSE LBRAC stmt_list RBRAC
+Rule 53    while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+Rule 54    do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+Rule 55    for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+Rule 56    foropt1 -> assaign
+Rule 57    foropt1 -> vardec
+Rule 58    foropt1 -> SEMI
+Rule 59    foropt2 -> con_exp SEMI
+Rule 60    foropt2 -> SEMI
+Rule 61    foropt3 -> assaign
+Rule 62    foropt3 -> SEMI
+
+Terminals, with rules where they appear
+
+ALBRAC               : 10 32 39
+ARBRAC               : 10 33 40
+CHAR                 : 13
+CHARV                : 16
+COL                  : 
+COM                  : 
+DIVIDE               : 26
+DO                   : 54
+DOT                  : 10 14
+ELSE                 : 52
+EQUALS               : 19 34 34 38 47
+FALSE                : 45
+FLOAT                : 12
+FOR                  : 55
+ID                   : 10 10 17 30 42 47
+IF                   : 50
+INCLUDE              : 10
+INT                  : 11
+IS                   : 
+LAND                 : 
+LBRAC                : 50 52 53 54 55
+LPAREN               : 31 44 50 53 54 55
+MINUS                : 23
+NAME                 : 
+NEWLINE              : 
+NOT                  : 35
+NUMBER               : 14 14 15 29 43
+PERC                 : 
+PLUS                 : 22
+POW                  : 27
+QUOT                 : 
+RBRAC                : 51 52 52 53 54 55
+RETURN               : 
+RPAREN               : 31 44 50 53 54 55
+SEMI                 : 18 20 21 48 49 58 59 60 62
+SHARP                : 10
+SLBRAC               : 
+SRBRAC               : 
+THEN                 : 
+TIMES                : 25
+TRUE                 : 46
+WHILE                : 53 54
+error                : 
+
+Nonterminals, with rules where they appear
+
+assaign              : 5 56 61
+con_exp              : 32 33 34 35 44 50 53 54 59
+con_term             : 36 37 38
+do_while             : 8
+exp                  : 21 22 23 31 49
+factor               : 25 26 27 28
+for                  : 9
+foropt1              : 55
+foropt2              : 55
+foropt3              : 55
+if                   : 6
+include              : 3
+other_assaign        : 47
+other_con_exp        : 32 33 34 39 40 41
+other_con_term2      : 35
+others_if            : 50
+others_vardec2       : 19
+stmt                 : 1 2
+stmt_list            : 2 50 52 53 54 55 0
+term                 : 22 23 24 25 26 27
+types                : 17
+values               : 20 48
+vardec               : 4 57
+vardec2              : 17
+while                : 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . stmt_list
+    (1) stmt_list -> . stmt
+    (2) stmt_list -> . stmt_list stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt_list                      shift and go to state 1
+    stmt                           shift and go to state 2
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 1
+
+    (0) S' -> stmt_list .
+    (2) stmt_list -> stmt_list . stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt                           shift and go to state 20
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 2
+
+    (1) stmt_list -> stmt .
+
+    SHARP           reduce using rule 1 (stmt_list -> stmt .)
+    ID              reduce using rule 1 (stmt_list -> stmt .)
+    IF              reduce using rule 1 (stmt_list -> stmt .)
+    WHILE           reduce using rule 1 (stmt_list -> stmt .)
+    DO              reduce using rule 1 (stmt_list -> stmt .)
+    FOR             reduce using rule 1 (stmt_list -> stmt .)
+    INT             reduce using rule 1 (stmt_list -> stmt .)
+    FLOAT           reduce using rule 1 (stmt_list -> stmt .)
+    CHAR            reduce using rule 1 (stmt_list -> stmt .)
+    $end            reduce using rule 1 (stmt_list -> stmt .)
+    RBRAC           reduce using rule 1 (stmt_list -> stmt .)
+
+
+state 3
+
+    (3) stmt -> include .
+
+    SHARP           reduce using rule 3 (stmt -> include .)
+    ID              reduce using rule 3 (stmt -> include .)
+    IF              reduce using rule 3 (stmt -> include .)
+    WHILE           reduce using rule 3 (stmt -> include .)
+    DO              reduce using rule 3 (stmt -> include .)
+    FOR             reduce using rule 3 (stmt -> include .)
+    INT             reduce using rule 3 (stmt -> include .)
+    FLOAT           reduce using rule 3 (stmt -> include .)
+    CHAR            reduce using rule 3 (stmt -> include .)
+    $end            reduce using rule 3 (stmt -> include .)
+    RBRAC           reduce using rule 3 (stmt -> include .)
+
+
+state 4
+
+    (4) stmt -> vardec .
+
+    SHARP           reduce using rule 4 (stmt -> vardec .)
+    ID              reduce using rule 4 (stmt -> vardec .)
+    IF              reduce using rule 4 (stmt -> vardec .)
+    WHILE           reduce using rule 4 (stmt -> vardec .)
+    DO              reduce using rule 4 (stmt -> vardec .)
+    FOR             reduce using rule 4 (stmt -> vardec .)
+    INT             reduce using rule 4 (stmt -> vardec .)
+    FLOAT           reduce using rule 4 (stmt -> vardec .)
+    CHAR            reduce using rule 4 (stmt -> vardec .)
+    $end            reduce using rule 4 (stmt -> vardec .)
+    RBRAC           reduce using rule 4 (stmt -> vardec .)
+
+
+state 5
+
+    (5) stmt -> assaign .
+
+    SHARP           reduce using rule 5 (stmt -> assaign .)
+    ID              reduce using rule 5 (stmt -> assaign .)
+    IF              reduce using rule 5 (stmt -> assaign .)
+    WHILE           reduce using rule 5 (stmt -> assaign .)
+    DO              reduce using rule 5 (stmt -> assaign .)
+    FOR             reduce using rule 5 (stmt -> assaign .)
+    INT             reduce using rule 5 (stmt -> assaign .)
+    FLOAT           reduce using rule 5 (stmt -> assaign .)
+    CHAR            reduce using rule 5 (stmt -> assaign .)
+    $end            reduce using rule 5 (stmt -> assaign .)
+    RBRAC           reduce using rule 5 (stmt -> assaign .)
+
+
+state 6
+
+    (6) stmt -> if .
+
+    SHARP           reduce using rule 6 (stmt -> if .)
+    ID              reduce using rule 6 (stmt -> if .)
+    IF              reduce using rule 6 (stmt -> if .)
+    WHILE           reduce using rule 6 (stmt -> if .)
+    DO              reduce using rule 6 (stmt -> if .)
+    FOR             reduce using rule 6 (stmt -> if .)
+    INT             reduce using rule 6 (stmt -> if .)
+    FLOAT           reduce using rule 6 (stmt -> if .)
+    CHAR            reduce using rule 6 (stmt -> if .)
+    $end            reduce using rule 6 (stmt -> if .)
+    RBRAC           reduce using rule 6 (stmt -> if .)
+
+
+state 7
+
+    (7) stmt -> while .
+
+    SHARP           reduce using rule 7 (stmt -> while .)
+    ID              reduce using rule 7 (stmt -> while .)
+    IF              reduce using rule 7 (stmt -> while .)
+    WHILE           reduce using rule 7 (stmt -> while .)
+    DO              reduce using rule 7 (stmt -> while .)
+    FOR             reduce using rule 7 (stmt -> while .)
+    INT             reduce using rule 7 (stmt -> while .)
+    FLOAT           reduce using rule 7 (stmt -> while .)
+    CHAR            reduce using rule 7 (stmt -> while .)
+    $end            reduce using rule 7 (stmt -> while .)
+    RBRAC           reduce using rule 7 (stmt -> while .)
+
+
+state 8
+
+    (8) stmt -> do_while .
+
+    SHARP           reduce using rule 8 (stmt -> do_while .)
+    ID              reduce using rule 8 (stmt -> do_while .)
+    IF              reduce using rule 8 (stmt -> do_while .)
+    WHILE           reduce using rule 8 (stmt -> do_while .)
+    DO              reduce using rule 8 (stmt -> do_while .)
+    FOR             reduce using rule 8 (stmt -> do_while .)
+    INT             reduce using rule 8 (stmt -> do_while .)
+    FLOAT           reduce using rule 8 (stmt -> do_while .)
+    CHAR            reduce using rule 8 (stmt -> do_while .)
+    $end            reduce using rule 8 (stmt -> do_while .)
+    RBRAC           reduce using rule 8 (stmt -> do_while .)
+
+
+state 9
+
+    (9) stmt -> for .
+
+    SHARP           reduce using rule 9 (stmt -> for .)
+    ID              reduce using rule 9 (stmt -> for .)
+    IF              reduce using rule 9 (stmt -> for .)
+    WHILE           reduce using rule 9 (stmt -> for .)
+    DO              reduce using rule 9 (stmt -> for .)
+    FOR             reduce using rule 9 (stmt -> for .)
+    INT             reduce using rule 9 (stmt -> for .)
+    FLOAT           reduce using rule 9 (stmt -> for .)
+    CHAR            reduce using rule 9 (stmt -> for .)
+    $end            reduce using rule 9 (stmt -> for .)
+    RBRAC           reduce using rule 9 (stmt -> for .)
+
+
+state 10
+
+    (10) include -> SHARP . INCLUDE ALBRAC ID DOT ID ARBRAC
+
+    INCLUDE         shift and go to state 21
+
+
+state 11
+
+    (47) assaign -> ID . EQUALS other_assaign
+
+    EQUALS          shift and go to state 22
+
+
+state 12
+
+    (17) vardec -> types . ID vardec2
+
+    ID              shift and go to state 23
+
+
+state 13
+
+    (50) if -> IF . LPAREN con_exp RPAREN LBRAC stmt_list others_if
+
+    LPAREN          shift and go to state 24
+
+
+state 14
+
+    (53) while -> WHILE . LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+
+    LPAREN          shift and go to state 25
+
+
+state 15
+
+    (54) do_while -> DO . LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+
+    LBRAC           shift and go to state 26
+
+
+state 16
+
+    (55) for -> FOR . LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+
+    LPAREN          shift and go to state 27
+
+
+state 17
+
+    (11) types -> INT .
+
+    ID              reduce using rule 11 (types -> INT .)
+
+
+state 18
+
+    (12) types -> FLOAT .
+
+    ID              reduce using rule 12 (types -> FLOAT .)
+
+
+state 19
+
+    (13) types -> CHAR .
+
+    ID              reduce using rule 13 (types -> CHAR .)
+
+
+state 20
+
+    (2) stmt_list -> stmt_list stmt .
+
+    SHARP           reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    ID              reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    IF              reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    WHILE           reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    DO              reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    FOR             reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    INT             reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    FLOAT           reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    CHAR            reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    $end            reduce using rule 2 (stmt_list -> stmt_list stmt .)
+    RBRAC           reduce using rule 2 (stmt_list -> stmt_list stmt .)
+
+
+state 21
+
+    (10) include -> SHARP INCLUDE . ALBRAC ID DOT ID ARBRAC
+
+    ALBRAC          shift and go to state 28
+
+
+state 22
+
+    (47) assaign -> ID EQUALS . other_assaign
+    (48) other_assaign -> . values SEMI
+    (49) other_assaign -> . exp SEMI
+    (14) values -> . NUMBER DOT NUMBER
+    (15) values -> . NUMBER
+    (16) values -> . CHARV
+    (22) exp -> . exp PLUS term
+    (23) exp -> . exp MINUS term
+    (24) exp -> . term
+    (25) term -> . term TIMES factor
+    (26) term -> . term DIVIDE factor
+    (27) term -> . term POW factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . ID
+    (31) factor -> . LPAREN exp RPAREN
+
+    NUMBER          shift and go to state 33
+    CHARV           shift and go to state 34
+    ID              shift and go to state 29
+    LPAREN          shift and go to state 37
+
+    other_assaign                  shift and go to state 30
+    values                         shift and go to state 31
+    exp                            shift and go to state 32
+    term                           shift and go to state 35
+    factor                         shift and go to state 36
+
+state 23
+
+    (17) vardec -> types ID . vardec2
+    (18) vardec2 -> . SEMI
+    (19) vardec2 -> . EQUALS others_vardec2
+
+    SEMI            shift and go to state 39
+    EQUALS          shift and go to state 40
+
+    vardec2                        shift and go to state 38
+
+state 24
+
+    (50) if -> IF LPAREN . con_exp RPAREN LBRAC stmt_list others_if
+    (32) con_exp -> . con_exp ALBRAC other_con_exp
+    (33) con_exp -> . con_exp ARBRAC other_con_exp
+    (34) con_exp -> . con_exp EQUALS EQUALS other_con_exp
+    (35) con_exp -> . con_exp NOT other_con_term2
+    (36) con_exp -> . con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    con_exp                        shift and go to state 42
+    con_term                       shift and go to state 43
+
+state 25
+
+    (53) while -> WHILE LPAREN . con_exp RPAREN LBRAC stmt_list RBRAC
+    (32) con_exp -> . con_exp ALBRAC other_con_exp
+    (33) con_exp -> . con_exp ARBRAC other_con_exp
+    (34) con_exp -> . con_exp EQUALS EQUALS other_con_exp
+    (35) con_exp -> . con_exp NOT other_con_term2
+    (36) con_exp -> . con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    con_exp                        shift and go to state 48
+    con_term                       shift and go to state 43
+
+state 26
+
+    (54) do_while -> DO LBRAC . stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (1) stmt_list -> . stmt
+    (2) stmt_list -> . stmt_list stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt_list                      shift and go to state 49
+    stmt                           shift and go to state 2
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 27
+
+    (55) for -> FOR LPAREN . foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (56) foropt1 -> . assaign
+    (57) foropt1 -> . vardec
+    (58) foropt1 -> . SEMI
+    (47) assaign -> . ID EQUALS other_assaign
+    (17) vardec -> . types ID vardec2
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    SEMI            shift and go to state 53
+    ID              shift and go to state 11
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    foropt1                        shift and go to state 50
+    assaign                        shift and go to state 51
+    vardec                         shift and go to state 52
+    types                          shift and go to state 12
+
+state 28
+
+    (10) include -> SHARP INCLUDE ALBRAC . ID DOT ID ARBRAC
+
+    ID              shift and go to state 54
+
+
+state 29
+
+    (30) factor -> ID .
+
+    TIMES           reduce using rule 30 (factor -> ID .)
+    DIVIDE          reduce using rule 30 (factor -> ID .)
+    POW             reduce using rule 30 (factor -> ID .)
+    SEMI            reduce using rule 30 (factor -> ID .)
+    PLUS            reduce using rule 30 (factor -> ID .)
+    MINUS           reduce using rule 30 (factor -> ID .)
+    RPAREN          reduce using rule 30 (factor -> ID .)
+
+
+state 30
+
+    (47) assaign -> ID EQUALS other_assaign .
+
+    SHARP           reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    ID              reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    IF              reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    WHILE           reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    DO              reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    FOR             reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    INT             reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    FLOAT           reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    CHAR            reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    $end            reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    RBRAC           reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    SEMI            reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    NUMBER          reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    LPAREN          reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    FALSE           reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    TRUE            reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+    RPAREN          reduce using rule 47 (assaign -> ID EQUALS other_assaign .)
+
+
+state 31
+
+    (48) other_assaign -> values . SEMI
+
+    SEMI            shift and go to state 55
+
+
+state 32
+
+    (49) other_assaign -> exp . SEMI
+    (22) exp -> exp . PLUS term
+    (23) exp -> exp . MINUS term
+
+    SEMI            shift and go to state 56
+    PLUS            shift and go to state 57
+    MINUS           shift and go to state 58
+
+
+state 33
+
+    (14) values -> NUMBER . DOT NUMBER
+    (15) values -> NUMBER .
+    (29) factor -> NUMBER .
+
+  ! reduce/reduce conflict for SEMI resolved using rule 15 (values -> NUMBER .)
+    DOT             shift and go to state 59
+    SEMI            reduce using rule 15 (values -> NUMBER .)
+    TIMES           reduce using rule 29 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 29 (factor -> NUMBER .)
+    POW             reduce using rule 29 (factor -> NUMBER .)
+    PLUS            reduce using rule 29 (factor -> NUMBER .)
+    MINUS           reduce using rule 29 (factor -> NUMBER .)
+
+  ! SEMI            [ reduce using rule 29 (factor -> NUMBER .) ]
+
+
+state 34
+
+    (16) values -> CHARV .
+
+    SEMI            reduce using rule 16 (values -> CHARV .)
+
+
+state 35
+
+    (24) exp -> term .
+    (25) term -> term . TIMES factor
+    (26) term -> term . DIVIDE factor
+    (27) term -> term . POW factor
+
+    SEMI            reduce using rule 24 (exp -> term .)
+    PLUS            reduce using rule 24 (exp -> term .)
+    MINUS           reduce using rule 24 (exp -> term .)
+    RPAREN          reduce using rule 24 (exp -> term .)
+    TIMES           shift and go to state 60
+    DIVIDE          shift and go to state 61
+    POW             shift and go to state 62
+
+
+state 36
+
+    (28) term -> factor .
+
+    TIMES           reduce using rule 28 (term -> factor .)
+    DIVIDE          reduce using rule 28 (term -> factor .)
+    POW             reduce using rule 28 (term -> factor .)
+    SEMI            reduce using rule 28 (term -> factor .)
+    PLUS            reduce using rule 28 (term -> factor .)
+    MINUS           reduce using rule 28 (term -> factor .)
+    RPAREN          reduce using rule 28 (term -> factor .)
+
+
+state 37
+
+    (31) factor -> LPAREN . exp RPAREN
+    (22) exp -> . exp PLUS term
+    (23) exp -> . exp MINUS term
+    (24) exp -> . term
+    (25) term -> . term TIMES factor
+    (26) term -> . term DIVIDE factor
+    (27) term -> . term POW factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . ID
+    (31) factor -> . LPAREN exp RPAREN
+
+    NUMBER          shift and go to state 64
+    ID              shift and go to state 29
+    LPAREN          shift and go to state 37
+
+    exp                            shift and go to state 63
+    term                           shift and go to state 35
+    factor                         shift and go to state 36
+
+state 38
+
+    (17) vardec -> types ID vardec2 .
+
+    SHARP           reduce using rule 17 (vardec -> types ID vardec2 .)
+    ID              reduce using rule 17 (vardec -> types ID vardec2 .)
+    IF              reduce using rule 17 (vardec -> types ID vardec2 .)
+    WHILE           reduce using rule 17 (vardec -> types ID vardec2 .)
+    DO              reduce using rule 17 (vardec -> types ID vardec2 .)
+    FOR             reduce using rule 17 (vardec -> types ID vardec2 .)
+    INT             reduce using rule 17 (vardec -> types ID vardec2 .)
+    FLOAT           reduce using rule 17 (vardec -> types ID vardec2 .)
+    CHAR            reduce using rule 17 (vardec -> types ID vardec2 .)
+    $end            reduce using rule 17 (vardec -> types ID vardec2 .)
+    RBRAC           reduce using rule 17 (vardec -> types ID vardec2 .)
+    SEMI            reduce using rule 17 (vardec -> types ID vardec2 .)
+    NUMBER          reduce using rule 17 (vardec -> types ID vardec2 .)
+    LPAREN          reduce using rule 17 (vardec -> types ID vardec2 .)
+    FALSE           reduce using rule 17 (vardec -> types ID vardec2 .)
+    TRUE            reduce using rule 17 (vardec -> types ID vardec2 .)
+
+
+state 39
+
+    (18) vardec2 -> SEMI .
+
+    SHARP           reduce using rule 18 (vardec2 -> SEMI .)
+    ID              reduce using rule 18 (vardec2 -> SEMI .)
+    IF              reduce using rule 18 (vardec2 -> SEMI .)
+    WHILE           reduce using rule 18 (vardec2 -> SEMI .)
+    DO              reduce using rule 18 (vardec2 -> SEMI .)
+    FOR             reduce using rule 18 (vardec2 -> SEMI .)
+    INT             reduce using rule 18 (vardec2 -> SEMI .)
+    FLOAT           reduce using rule 18 (vardec2 -> SEMI .)
+    CHAR            reduce using rule 18 (vardec2 -> SEMI .)
+    $end            reduce using rule 18 (vardec2 -> SEMI .)
+    RBRAC           reduce using rule 18 (vardec2 -> SEMI .)
+    SEMI            reduce using rule 18 (vardec2 -> SEMI .)
+    NUMBER          reduce using rule 18 (vardec2 -> SEMI .)
+    LPAREN          reduce using rule 18 (vardec2 -> SEMI .)
+    FALSE           reduce using rule 18 (vardec2 -> SEMI .)
+    TRUE            reduce using rule 18 (vardec2 -> SEMI .)
+
+
+state 40
+
+    (19) vardec2 -> EQUALS . others_vardec2
+    (20) others_vardec2 -> . values SEMI
+    (21) others_vardec2 -> . exp SEMI
+    (14) values -> . NUMBER DOT NUMBER
+    (15) values -> . NUMBER
+    (16) values -> . CHARV
+    (22) exp -> . exp PLUS term
+    (23) exp -> . exp MINUS term
+    (24) exp -> . term
+    (25) term -> . term TIMES factor
+    (26) term -> . term DIVIDE factor
+    (27) term -> . term POW factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . ID
+    (31) factor -> . LPAREN exp RPAREN
+
+    NUMBER          shift and go to state 33
+    CHARV           shift and go to state 34
+    ID              shift and go to state 29
+    LPAREN          shift and go to state 37
+
+    others_vardec2                 shift and go to state 65
+    values                         shift and go to state 66
+    exp                            shift and go to state 67
+    term                           shift and go to state 35
+    factor                         shift and go to state 36
+
+state 41
+
+    (44) con_term -> LPAREN . con_exp RPAREN
+    (32) con_exp -> . con_exp ALBRAC other_con_exp
+    (33) con_exp -> . con_exp ARBRAC other_con_exp
+    (34) con_exp -> . con_exp EQUALS EQUALS other_con_exp
+    (35) con_exp -> . con_exp NOT other_con_term2
+    (36) con_exp -> . con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    con_exp                        shift and go to state 68
+    con_term                       shift and go to state 43
+
+state 42
+
+    (50) if -> IF LPAREN con_exp . RPAREN LBRAC stmt_list others_if
+    (32) con_exp -> con_exp . ALBRAC other_con_exp
+    (33) con_exp -> con_exp . ARBRAC other_con_exp
+    (34) con_exp -> con_exp . EQUALS EQUALS other_con_exp
+    (35) con_exp -> con_exp . NOT other_con_term2
+
+    RPAREN          shift and go to state 69
+    ALBRAC          shift and go to state 70
+    ARBRAC          shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOT             shift and go to state 73
+
+
+state 43
+
+    (36) con_exp -> con_term .
+
+    RPAREN          reduce using rule 36 (con_exp -> con_term .)
+    ALBRAC          reduce using rule 36 (con_exp -> con_term .)
+    ARBRAC          reduce using rule 36 (con_exp -> con_term .)
+    EQUALS          reduce using rule 36 (con_exp -> con_term .)
+    NOT             reduce using rule 36 (con_exp -> con_term .)
+    SEMI            reduce using rule 36 (con_exp -> con_term .)
+
+
+state 44
+
+    (42) con_term -> ID .
+
+    RPAREN          reduce using rule 42 (con_term -> ID .)
+    ALBRAC          reduce using rule 42 (con_term -> ID .)
+    ARBRAC          reduce using rule 42 (con_term -> ID .)
+    EQUALS          reduce using rule 42 (con_term -> ID .)
+    NOT             reduce using rule 42 (con_term -> ID .)
+    SEMI            reduce using rule 42 (con_term -> ID .)
+
+
+state 45
+
+    (43) con_term -> NUMBER .
+
+    RPAREN          reduce using rule 43 (con_term -> NUMBER .)
+    ALBRAC          reduce using rule 43 (con_term -> NUMBER .)
+    ARBRAC          reduce using rule 43 (con_term -> NUMBER .)
+    EQUALS          reduce using rule 43 (con_term -> NUMBER .)
+    NOT             reduce using rule 43 (con_term -> NUMBER .)
+    SEMI            reduce using rule 43 (con_term -> NUMBER .)
+
+
+state 46
+
+    (45) con_term -> FALSE .
+
+    RPAREN          reduce using rule 45 (con_term -> FALSE .)
+    ALBRAC          reduce using rule 45 (con_term -> FALSE .)
+    ARBRAC          reduce using rule 45 (con_term -> FALSE .)
+    EQUALS          reduce using rule 45 (con_term -> FALSE .)
+    NOT             reduce using rule 45 (con_term -> FALSE .)
+    SEMI            reduce using rule 45 (con_term -> FALSE .)
+
+
+state 47
+
+    (46) con_term -> TRUE .
+
+    RPAREN          reduce using rule 46 (con_term -> TRUE .)
+    ALBRAC          reduce using rule 46 (con_term -> TRUE .)
+    ARBRAC          reduce using rule 46 (con_term -> TRUE .)
+    EQUALS          reduce using rule 46 (con_term -> TRUE .)
+    NOT             reduce using rule 46 (con_term -> TRUE .)
+    SEMI            reduce using rule 46 (con_term -> TRUE .)
+
+
+state 48
+
+    (53) while -> WHILE LPAREN con_exp . RPAREN LBRAC stmt_list RBRAC
+    (32) con_exp -> con_exp . ALBRAC other_con_exp
+    (33) con_exp -> con_exp . ARBRAC other_con_exp
+    (34) con_exp -> con_exp . EQUALS EQUALS other_con_exp
+    (35) con_exp -> con_exp . NOT other_con_term2
+
+    RPAREN          shift and go to state 74
+    ALBRAC          shift and go to state 70
+    ARBRAC          shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOT             shift and go to state 73
+
+
+state 49
+
+    (54) do_while -> DO LBRAC stmt_list . RBRAC WHILE LPAREN con_exp RPAREN
+    (2) stmt_list -> stmt_list . stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    RBRAC           shift and go to state 75
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt                           shift and go to state 20
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 50
+
+    (55) for -> FOR LPAREN foropt1 . foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (59) foropt2 -> . con_exp SEMI
+    (60) foropt2 -> . SEMI
+    (32) con_exp -> . con_exp ALBRAC other_con_exp
+    (33) con_exp -> . con_exp ARBRAC other_con_exp
+    (34) con_exp -> . con_exp EQUALS EQUALS other_con_exp
+    (35) con_exp -> . con_exp NOT other_con_term2
+    (36) con_exp -> . con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    SEMI            shift and go to state 78
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    foropt2                        shift and go to state 76
+    con_exp                        shift and go to state 77
+    con_term                       shift and go to state 43
+
+state 51
+
+    (56) foropt1 -> assaign .
+
+    SEMI            reduce using rule 56 (foropt1 -> assaign .)
+    ID              reduce using rule 56 (foropt1 -> assaign .)
+    NUMBER          reduce using rule 56 (foropt1 -> assaign .)
+    LPAREN          reduce using rule 56 (foropt1 -> assaign .)
+    FALSE           reduce using rule 56 (foropt1 -> assaign .)
+    TRUE            reduce using rule 56 (foropt1 -> assaign .)
+
+
+state 52
+
+    (57) foropt1 -> vardec .
+
+    SEMI            reduce using rule 57 (foropt1 -> vardec .)
+    ID              reduce using rule 57 (foropt1 -> vardec .)
+    NUMBER          reduce using rule 57 (foropt1 -> vardec .)
+    LPAREN          reduce using rule 57 (foropt1 -> vardec .)
+    FALSE           reduce using rule 57 (foropt1 -> vardec .)
+    TRUE            reduce using rule 57 (foropt1 -> vardec .)
+
+
+state 53
+
+    (58) foropt1 -> SEMI .
+
+    SEMI            reduce using rule 58 (foropt1 -> SEMI .)
+    ID              reduce using rule 58 (foropt1 -> SEMI .)
+    NUMBER          reduce using rule 58 (foropt1 -> SEMI .)
+    LPAREN          reduce using rule 58 (foropt1 -> SEMI .)
+    FALSE           reduce using rule 58 (foropt1 -> SEMI .)
+    TRUE            reduce using rule 58 (foropt1 -> SEMI .)
+
+
+state 54
+
+    (10) include -> SHARP INCLUDE ALBRAC ID . DOT ID ARBRAC
+
+    DOT             shift and go to state 79
+
+
+state 55
+
+    (48) other_assaign -> values SEMI .
+
+    SHARP           reduce using rule 48 (other_assaign -> values SEMI .)
+    ID              reduce using rule 48 (other_assaign -> values SEMI .)
+    IF              reduce using rule 48 (other_assaign -> values SEMI .)
+    WHILE           reduce using rule 48 (other_assaign -> values SEMI .)
+    DO              reduce using rule 48 (other_assaign -> values SEMI .)
+    FOR             reduce using rule 48 (other_assaign -> values SEMI .)
+    INT             reduce using rule 48 (other_assaign -> values SEMI .)
+    FLOAT           reduce using rule 48 (other_assaign -> values SEMI .)
+    CHAR            reduce using rule 48 (other_assaign -> values SEMI .)
+    $end            reduce using rule 48 (other_assaign -> values SEMI .)
+    RBRAC           reduce using rule 48 (other_assaign -> values SEMI .)
+    SEMI            reduce using rule 48 (other_assaign -> values SEMI .)
+    NUMBER          reduce using rule 48 (other_assaign -> values SEMI .)
+    LPAREN          reduce using rule 48 (other_assaign -> values SEMI .)
+    FALSE           reduce using rule 48 (other_assaign -> values SEMI .)
+    TRUE            reduce using rule 48 (other_assaign -> values SEMI .)
+    RPAREN          reduce using rule 48 (other_assaign -> values SEMI .)
+
+
+state 56
+
+    (49) other_assaign -> exp SEMI .
+
+    SHARP           reduce using rule 49 (other_assaign -> exp SEMI .)
+    ID              reduce using rule 49 (other_assaign -> exp SEMI .)
+    IF              reduce using rule 49 (other_assaign -> exp SEMI .)
+    WHILE           reduce using rule 49 (other_assaign -> exp SEMI .)
+    DO              reduce using rule 49 (other_assaign -> exp SEMI .)
+    FOR             reduce using rule 49 (other_assaign -> exp SEMI .)
+    INT             reduce using rule 49 (other_assaign -> exp SEMI .)
+    FLOAT           reduce using rule 49 (other_assaign -> exp SEMI .)
+    CHAR            reduce using rule 49 (other_assaign -> exp SEMI .)
+    $end            reduce using rule 49 (other_assaign -> exp SEMI .)
+    RBRAC           reduce using rule 49 (other_assaign -> exp SEMI .)
+    SEMI            reduce using rule 49 (other_assaign -> exp SEMI .)
+    NUMBER          reduce using rule 49 (other_assaign -> exp SEMI .)
+    LPAREN          reduce using rule 49 (other_assaign -> exp SEMI .)
+    FALSE           reduce using rule 49 (other_assaign -> exp SEMI .)
+    TRUE            reduce using rule 49 (other_assaign -> exp SEMI .)
+    RPAREN          reduce using rule 49 (other_assaign -> exp SEMI .)
+
+
+state 57
+
+    (22) exp -> exp PLUS . term
+    (25) term -> . term TIMES factor
+    (26) term -> . term DIVIDE factor
+    (27) term -> . term POW factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . ID
+    (31) factor -> . LPAREN exp RPAREN
+
+    NUMBER          shift and go to state 64
+    ID              shift and go to state 29
+    LPAREN          shift and go to state 37
+
+    term                           shift and go to state 80
+    factor                         shift and go to state 36
+
+state 58
+
+    (23) exp -> exp MINUS . term
+    (25) term -> . term TIMES factor
+    (26) term -> . term DIVIDE factor
+    (27) term -> . term POW factor
+    (28) term -> . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . ID
+    (31) factor -> . LPAREN exp RPAREN
+
+    NUMBER          shift and go to state 64
+    ID              shift and go to state 29
+    LPAREN          shift and go to state 37
+
+    term                           shift and go to state 81
+    factor                         shift and go to state 36
+
+state 59
+
+    (14) values -> NUMBER DOT . NUMBER
+
+    NUMBER          shift and go to state 82
+
+
+state 60
+
+    (25) term -> term TIMES . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . ID
+    (31) factor -> . LPAREN exp RPAREN
+
+    NUMBER          shift and go to state 64
+    ID              shift and go to state 29
+    LPAREN          shift and go to state 37
+
+    factor                         shift and go to state 83
+
+state 61
+
+    (26) term -> term DIVIDE . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . ID
+    (31) factor -> . LPAREN exp RPAREN
+
+    NUMBER          shift and go to state 64
+    ID              shift and go to state 29
+    LPAREN          shift and go to state 37
+
+    factor                         shift and go to state 84
+
+state 62
+
+    (27) term -> term POW . factor
+    (29) factor -> . NUMBER
+    (30) factor -> . ID
+    (31) factor -> . LPAREN exp RPAREN
+
+    NUMBER          shift and go to state 64
+    ID              shift and go to state 29
+    LPAREN          shift and go to state 37
+
+    factor                         shift and go to state 85
+
+state 63
+
+    (31) factor -> LPAREN exp . RPAREN
+    (22) exp -> exp . PLUS term
+    (23) exp -> exp . MINUS term
+
+    RPAREN          shift and go to state 86
+    PLUS            shift and go to state 57
+    MINUS           shift and go to state 58
+
+
+state 64
+
+    (29) factor -> NUMBER .
+
+    TIMES           reduce using rule 29 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 29 (factor -> NUMBER .)
+    POW             reduce using rule 29 (factor -> NUMBER .)
+    RPAREN          reduce using rule 29 (factor -> NUMBER .)
+    PLUS            reduce using rule 29 (factor -> NUMBER .)
+    MINUS           reduce using rule 29 (factor -> NUMBER .)
+    SEMI            reduce using rule 29 (factor -> NUMBER .)
+
+
+state 65
+
+    (19) vardec2 -> EQUALS others_vardec2 .
+
+    SHARP           reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    ID              reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    IF              reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    WHILE           reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    DO              reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    FOR             reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    INT             reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    FLOAT           reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    CHAR            reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    $end            reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    RBRAC           reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    SEMI            reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    NUMBER          reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    LPAREN          reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    FALSE           reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+    TRUE            reduce using rule 19 (vardec2 -> EQUALS others_vardec2 .)
+
+
+state 66
+
+    (20) others_vardec2 -> values . SEMI
+
+    SEMI            shift and go to state 87
+
+
+state 67
+
+    (21) others_vardec2 -> exp . SEMI
+    (22) exp -> exp . PLUS term
+    (23) exp -> exp . MINUS term
+
+    SEMI            shift and go to state 88
+    PLUS            shift and go to state 57
+    MINUS           shift and go to state 58
+
+
+state 68
+
+    (44) con_term -> LPAREN con_exp . RPAREN
+    (32) con_exp -> con_exp . ALBRAC other_con_exp
+    (33) con_exp -> con_exp . ARBRAC other_con_exp
+    (34) con_exp -> con_exp . EQUALS EQUALS other_con_exp
+    (35) con_exp -> con_exp . NOT other_con_term2
+
+    RPAREN          shift and go to state 89
+    ALBRAC          shift and go to state 70
+    ARBRAC          shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOT             shift and go to state 73
+
+
+state 69
+
+    (50) if -> IF LPAREN con_exp RPAREN . LBRAC stmt_list others_if
+
+    LBRAC           shift and go to state 90
+
+
+state 70
+
+    (32) con_exp -> con_exp ALBRAC . other_con_exp
+    (37) other_con_exp -> . con_term
+    (38) other_con_exp -> . EQUALS con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    EQUALS          shift and go to state 93
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    other_con_exp                  shift and go to state 91
+    con_term                       shift and go to state 92
+
+state 71
+
+    (33) con_exp -> con_exp ARBRAC . other_con_exp
+    (37) other_con_exp -> . con_term
+    (38) other_con_exp -> . EQUALS con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    EQUALS          shift and go to state 93
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    other_con_exp                  shift and go to state 94
+    con_term                       shift and go to state 92
+
+state 72
+
+    (34) con_exp -> con_exp EQUALS . EQUALS other_con_exp
+
+    EQUALS          shift and go to state 95
+
+
+state 73
+
+    (35) con_exp -> con_exp NOT . other_con_term2
+    (39) other_con_term2 -> . ALBRAC other_con_exp
+    (40) other_con_term2 -> . ARBRAC other_con_exp
+    (41) other_con_term2 -> . other_con_exp
+    (37) other_con_exp -> . con_term
+    (38) other_con_exp -> . EQUALS con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    ALBRAC          shift and go to state 97
+    ARBRAC          shift and go to state 99
+    EQUALS          shift and go to state 93
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    other_con_term2                shift and go to state 96
+    other_con_exp                  shift and go to state 98
+    con_term                       shift and go to state 92
+
+state 74
+
+    (53) while -> WHILE LPAREN con_exp RPAREN . LBRAC stmt_list RBRAC
+
+    LBRAC           shift and go to state 100
+
+
+state 75
+
+    (54) do_while -> DO LBRAC stmt_list RBRAC . WHILE LPAREN con_exp RPAREN
+
+    WHILE           shift and go to state 101
+
+
+state 76
+
+    (55) for -> FOR LPAREN foropt1 foropt2 . foropt3 RPAREN LBRAC stmt_list RBRAC
+    (61) foropt3 -> . assaign
+    (62) foropt3 -> . SEMI
+    (47) assaign -> . ID EQUALS other_assaign
+
+    SEMI            shift and go to state 104
+    ID              shift and go to state 11
+
+    foropt3                        shift and go to state 102
+    assaign                        shift and go to state 103
+
+state 77
+
+    (59) foropt2 -> con_exp . SEMI
+    (32) con_exp -> con_exp . ALBRAC other_con_exp
+    (33) con_exp -> con_exp . ARBRAC other_con_exp
+    (34) con_exp -> con_exp . EQUALS EQUALS other_con_exp
+    (35) con_exp -> con_exp . NOT other_con_term2
+
+    SEMI            shift and go to state 105
+    ALBRAC          shift and go to state 70
+    ARBRAC          shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOT             shift and go to state 73
+
+
+state 78
+
+    (60) foropt2 -> SEMI .
+
+    SEMI            reduce using rule 60 (foropt2 -> SEMI .)
+    ID              reduce using rule 60 (foropt2 -> SEMI .)
+
+
+state 79
+
+    (10) include -> SHARP INCLUDE ALBRAC ID DOT . ID ARBRAC
+
+    ID              shift and go to state 106
+
+
+state 80
+
+    (22) exp -> exp PLUS term .
+    (25) term -> term . TIMES factor
+    (26) term -> term . DIVIDE factor
+    (27) term -> term . POW factor
+
+    SEMI            reduce using rule 22 (exp -> exp PLUS term .)
+    PLUS            reduce using rule 22 (exp -> exp PLUS term .)
+    MINUS           reduce using rule 22 (exp -> exp PLUS term .)
+    RPAREN          reduce using rule 22 (exp -> exp PLUS term .)
+    TIMES           shift and go to state 60
+    DIVIDE          shift and go to state 61
+    POW             shift and go to state 62
+
+
+state 81
+
+    (23) exp -> exp MINUS term .
+    (25) term -> term . TIMES factor
+    (26) term -> term . DIVIDE factor
+    (27) term -> term . POW factor
+
+    SEMI            reduce using rule 23 (exp -> exp MINUS term .)
+    PLUS            reduce using rule 23 (exp -> exp MINUS term .)
+    MINUS           reduce using rule 23 (exp -> exp MINUS term .)
+    RPAREN          reduce using rule 23 (exp -> exp MINUS term .)
+    TIMES           shift and go to state 60
+    DIVIDE          shift and go to state 61
+    POW             shift and go to state 62
+
+
+state 82
+
+    (14) values -> NUMBER DOT NUMBER .
+
+    SEMI            reduce using rule 14 (values -> NUMBER DOT NUMBER .)
+
+
+state 83
+
+    (25) term -> term TIMES factor .
+
+    TIMES           reduce using rule 25 (term -> term TIMES factor .)
+    DIVIDE          reduce using rule 25 (term -> term TIMES factor .)
+    POW             reduce using rule 25 (term -> term TIMES factor .)
+    SEMI            reduce using rule 25 (term -> term TIMES factor .)
+    PLUS            reduce using rule 25 (term -> term TIMES factor .)
+    MINUS           reduce using rule 25 (term -> term TIMES factor .)
+    RPAREN          reduce using rule 25 (term -> term TIMES factor .)
+
+
+state 84
+
+    (26) term -> term DIVIDE factor .
+
+    TIMES           reduce using rule 26 (term -> term DIVIDE factor .)
+    DIVIDE          reduce using rule 26 (term -> term DIVIDE factor .)
+    POW             reduce using rule 26 (term -> term DIVIDE factor .)
+    SEMI            reduce using rule 26 (term -> term DIVIDE factor .)
+    PLUS            reduce using rule 26 (term -> term DIVIDE factor .)
+    MINUS           reduce using rule 26 (term -> term DIVIDE factor .)
+    RPAREN          reduce using rule 26 (term -> term DIVIDE factor .)
+
+
+state 85
+
+    (27) term -> term POW factor .
+
+    TIMES           reduce using rule 27 (term -> term POW factor .)
+    DIVIDE          reduce using rule 27 (term -> term POW factor .)
+    POW             reduce using rule 27 (term -> term POW factor .)
+    SEMI            reduce using rule 27 (term -> term POW factor .)
+    PLUS            reduce using rule 27 (term -> term POW factor .)
+    MINUS           reduce using rule 27 (term -> term POW factor .)
+    RPAREN          reduce using rule 27 (term -> term POW factor .)
+
+
+state 86
+
+    (31) factor -> LPAREN exp RPAREN .
+
+    TIMES           reduce using rule 31 (factor -> LPAREN exp RPAREN .)
+    DIVIDE          reduce using rule 31 (factor -> LPAREN exp RPAREN .)
+    POW             reduce using rule 31 (factor -> LPAREN exp RPAREN .)
+    SEMI            reduce using rule 31 (factor -> LPAREN exp RPAREN .)
+    PLUS            reduce using rule 31 (factor -> LPAREN exp RPAREN .)
+    MINUS           reduce using rule 31 (factor -> LPAREN exp RPAREN .)
+    RPAREN          reduce using rule 31 (factor -> LPAREN exp RPAREN .)
+
+
+state 87
+
+    (20) others_vardec2 -> values SEMI .
+
+    SHARP           reduce using rule 20 (others_vardec2 -> values SEMI .)
+    ID              reduce using rule 20 (others_vardec2 -> values SEMI .)
+    IF              reduce using rule 20 (others_vardec2 -> values SEMI .)
+    WHILE           reduce using rule 20 (others_vardec2 -> values SEMI .)
+    DO              reduce using rule 20 (others_vardec2 -> values SEMI .)
+    FOR             reduce using rule 20 (others_vardec2 -> values SEMI .)
+    INT             reduce using rule 20 (others_vardec2 -> values SEMI .)
+    FLOAT           reduce using rule 20 (others_vardec2 -> values SEMI .)
+    CHAR            reduce using rule 20 (others_vardec2 -> values SEMI .)
+    $end            reduce using rule 20 (others_vardec2 -> values SEMI .)
+    RBRAC           reduce using rule 20 (others_vardec2 -> values SEMI .)
+    SEMI            reduce using rule 20 (others_vardec2 -> values SEMI .)
+    NUMBER          reduce using rule 20 (others_vardec2 -> values SEMI .)
+    LPAREN          reduce using rule 20 (others_vardec2 -> values SEMI .)
+    FALSE           reduce using rule 20 (others_vardec2 -> values SEMI .)
+    TRUE            reduce using rule 20 (others_vardec2 -> values SEMI .)
+
+
+state 88
+
+    (21) others_vardec2 -> exp SEMI .
+
+    SHARP           reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    ID              reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    IF              reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    WHILE           reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    DO              reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    FOR             reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    INT             reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    FLOAT           reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    CHAR            reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    $end            reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    RBRAC           reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    SEMI            reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    NUMBER          reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    LPAREN          reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    FALSE           reduce using rule 21 (others_vardec2 -> exp SEMI .)
+    TRUE            reduce using rule 21 (others_vardec2 -> exp SEMI .)
+
+
+state 89
+
+    (44) con_term -> LPAREN con_exp RPAREN .
+
+    RPAREN          reduce using rule 44 (con_term -> LPAREN con_exp RPAREN .)
+    ALBRAC          reduce using rule 44 (con_term -> LPAREN con_exp RPAREN .)
+    ARBRAC          reduce using rule 44 (con_term -> LPAREN con_exp RPAREN .)
+    EQUALS          reduce using rule 44 (con_term -> LPAREN con_exp RPAREN .)
+    NOT             reduce using rule 44 (con_term -> LPAREN con_exp RPAREN .)
+    SEMI            reduce using rule 44 (con_term -> LPAREN con_exp RPAREN .)
+
+
+state 90
+
+    (50) if -> IF LPAREN con_exp RPAREN LBRAC . stmt_list others_if
+    (1) stmt_list -> . stmt
+    (2) stmt_list -> . stmt_list stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt_list                      shift and go to state 107
+    stmt                           shift and go to state 2
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 91
+
+    (32) con_exp -> con_exp ALBRAC other_con_exp .
+
+    RPAREN          reduce using rule 32 (con_exp -> con_exp ALBRAC other_con_exp .)
+    ALBRAC          reduce using rule 32 (con_exp -> con_exp ALBRAC other_con_exp .)
+    ARBRAC          reduce using rule 32 (con_exp -> con_exp ALBRAC other_con_exp .)
+    EQUALS          reduce using rule 32 (con_exp -> con_exp ALBRAC other_con_exp .)
+    NOT             reduce using rule 32 (con_exp -> con_exp ALBRAC other_con_exp .)
+    SEMI            reduce using rule 32 (con_exp -> con_exp ALBRAC other_con_exp .)
+
+
+state 92
+
+    (37) other_con_exp -> con_term .
+
+    RPAREN          reduce using rule 37 (other_con_exp -> con_term .)
+    ALBRAC          reduce using rule 37 (other_con_exp -> con_term .)
+    ARBRAC          reduce using rule 37 (other_con_exp -> con_term .)
+    EQUALS          reduce using rule 37 (other_con_exp -> con_term .)
+    NOT             reduce using rule 37 (other_con_exp -> con_term .)
+    SEMI            reduce using rule 37 (other_con_exp -> con_term .)
+
+
+state 93
+
+    (38) other_con_exp -> EQUALS . con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    con_term                       shift and go to state 108
+
+state 94
+
+    (33) con_exp -> con_exp ARBRAC other_con_exp .
+
+    RPAREN          reduce using rule 33 (con_exp -> con_exp ARBRAC other_con_exp .)
+    ALBRAC          reduce using rule 33 (con_exp -> con_exp ARBRAC other_con_exp .)
+    ARBRAC          reduce using rule 33 (con_exp -> con_exp ARBRAC other_con_exp .)
+    EQUALS          reduce using rule 33 (con_exp -> con_exp ARBRAC other_con_exp .)
+    NOT             reduce using rule 33 (con_exp -> con_exp ARBRAC other_con_exp .)
+    SEMI            reduce using rule 33 (con_exp -> con_exp ARBRAC other_con_exp .)
+
+
+state 95
+
+    (34) con_exp -> con_exp EQUALS EQUALS . other_con_exp
+    (37) other_con_exp -> . con_term
+    (38) other_con_exp -> . EQUALS con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    EQUALS          shift and go to state 93
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    other_con_exp                  shift and go to state 109
+    con_term                       shift and go to state 92
+
+state 96
+
+    (35) con_exp -> con_exp NOT other_con_term2 .
+
+    RPAREN          reduce using rule 35 (con_exp -> con_exp NOT other_con_term2 .)
+    ALBRAC          reduce using rule 35 (con_exp -> con_exp NOT other_con_term2 .)
+    ARBRAC          reduce using rule 35 (con_exp -> con_exp NOT other_con_term2 .)
+    EQUALS          reduce using rule 35 (con_exp -> con_exp NOT other_con_term2 .)
+    NOT             reduce using rule 35 (con_exp -> con_exp NOT other_con_term2 .)
+    SEMI            reduce using rule 35 (con_exp -> con_exp NOT other_con_term2 .)
+
+
+state 97
+
+    (39) other_con_term2 -> ALBRAC . other_con_exp
+    (37) other_con_exp -> . con_term
+    (38) other_con_exp -> . EQUALS con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    EQUALS          shift and go to state 93
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    other_con_exp                  shift and go to state 110
+    con_term                       shift and go to state 92
+
+state 98
+
+    (41) other_con_term2 -> other_con_exp .
+
+    RPAREN          reduce using rule 41 (other_con_term2 -> other_con_exp .)
+    ALBRAC          reduce using rule 41 (other_con_term2 -> other_con_exp .)
+    ARBRAC          reduce using rule 41 (other_con_term2 -> other_con_exp .)
+    EQUALS          reduce using rule 41 (other_con_term2 -> other_con_exp .)
+    NOT             reduce using rule 41 (other_con_term2 -> other_con_exp .)
+    SEMI            reduce using rule 41 (other_con_term2 -> other_con_exp .)
+
+
+state 99
+
+    (40) other_con_term2 -> ARBRAC . other_con_exp
+    (37) other_con_exp -> . con_term
+    (38) other_con_exp -> . EQUALS con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    EQUALS          shift and go to state 93
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    other_con_exp                  shift and go to state 111
+    con_term                       shift and go to state 92
+
+state 100
+
+    (53) while -> WHILE LPAREN con_exp RPAREN LBRAC . stmt_list RBRAC
+    (1) stmt_list -> . stmt
+    (2) stmt_list -> . stmt_list stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt_list                      shift and go to state 112
+    stmt                           shift and go to state 2
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 101
+
+    (54) do_while -> DO LBRAC stmt_list RBRAC WHILE . LPAREN con_exp RPAREN
+
+    LPAREN          shift and go to state 113
+
+
+state 102
+
+    (55) for -> FOR LPAREN foropt1 foropt2 foropt3 . RPAREN LBRAC stmt_list RBRAC
+
+    RPAREN          shift and go to state 114
+
+
+state 103
+
+    (61) foropt3 -> assaign .
+
+    RPAREN          reduce using rule 61 (foropt3 -> assaign .)
+
+
+state 104
+
+    (62) foropt3 -> SEMI .
+
+    RPAREN          reduce using rule 62 (foropt3 -> SEMI .)
+
+
+state 105
+
+    (59) foropt2 -> con_exp SEMI .
+
+    SEMI            reduce using rule 59 (foropt2 -> con_exp SEMI .)
+    ID              reduce using rule 59 (foropt2 -> con_exp SEMI .)
+
+
+state 106
+
+    (10) include -> SHARP INCLUDE ALBRAC ID DOT ID . ARBRAC
+
+    ARBRAC          shift and go to state 115
+
+
+state 107
+
+    (50) if -> IF LPAREN con_exp RPAREN LBRAC stmt_list . others_if
+    (2) stmt_list -> stmt_list . stmt
+    (51) others_if -> . RBRAC
+    (52) others_if -> . RBRAC ELSE LBRAC stmt_list RBRAC
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    RBRAC           shift and go to state 117
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    others_if                      shift and go to state 116
+    stmt                           shift and go to state 20
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 108
+
+    (38) other_con_exp -> EQUALS con_term .
+
+    RPAREN          reduce using rule 38 (other_con_exp -> EQUALS con_term .)
+    ALBRAC          reduce using rule 38 (other_con_exp -> EQUALS con_term .)
+    ARBRAC          reduce using rule 38 (other_con_exp -> EQUALS con_term .)
+    EQUALS          reduce using rule 38 (other_con_exp -> EQUALS con_term .)
+    NOT             reduce using rule 38 (other_con_exp -> EQUALS con_term .)
+    SEMI            reduce using rule 38 (other_con_exp -> EQUALS con_term .)
+
+
+state 109
+
+    (34) con_exp -> con_exp EQUALS EQUALS other_con_exp .
+
+    RPAREN          reduce using rule 34 (con_exp -> con_exp EQUALS EQUALS other_con_exp .)
+    ALBRAC          reduce using rule 34 (con_exp -> con_exp EQUALS EQUALS other_con_exp .)
+    ARBRAC          reduce using rule 34 (con_exp -> con_exp EQUALS EQUALS other_con_exp .)
+    EQUALS          reduce using rule 34 (con_exp -> con_exp EQUALS EQUALS other_con_exp .)
+    NOT             reduce using rule 34 (con_exp -> con_exp EQUALS EQUALS other_con_exp .)
+    SEMI            reduce using rule 34 (con_exp -> con_exp EQUALS EQUALS other_con_exp .)
+
+
+state 110
+
+    (39) other_con_term2 -> ALBRAC other_con_exp .
+
+    RPAREN          reduce using rule 39 (other_con_term2 -> ALBRAC other_con_exp .)
+    ALBRAC          reduce using rule 39 (other_con_term2 -> ALBRAC other_con_exp .)
+    ARBRAC          reduce using rule 39 (other_con_term2 -> ALBRAC other_con_exp .)
+    EQUALS          reduce using rule 39 (other_con_term2 -> ALBRAC other_con_exp .)
+    NOT             reduce using rule 39 (other_con_term2 -> ALBRAC other_con_exp .)
+    SEMI            reduce using rule 39 (other_con_term2 -> ALBRAC other_con_exp .)
+
+
+state 111
+
+    (40) other_con_term2 -> ARBRAC other_con_exp .
+
+    RPAREN          reduce using rule 40 (other_con_term2 -> ARBRAC other_con_exp .)
+    ALBRAC          reduce using rule 40 (other_con_term2 -> ARBRAC other_con_exp .)
+    ARBRAC          reduce using rule 40 (other_con_term2 -> ARBRAC other_con_exp .)
+    EQUALS          reduce using rule 40 (other_con_term2 -> ARBRAC other_con_exp .)
+    NOT             reduce using rule 40 (other_con_term2 -> ARBRAC other_con_exp .)
+    SEMI            reduce using rule 40 (other_con_term2 -> ARBRAC other_con_exp .)
+
+
+state 112
+
+    (53) while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list . RBRAC
+    (2) stmt_list -> stmt_list . stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    RBRAC           shift and go to state 118
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt                           shift and go to state 20
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 113
+
+    (54) do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN . con_exp RPAREN
+    (32) con_exp -> . con_exp ALBRAC other_con_exp
+    (33) con_exp -> . con_exp ARBRAC other_con_exp
+    (34) con_exp -> . con_exp EQUALS EQUALS other_con_exp
+    (35) con_exp -> . con_exp NOT other_con_term2
+    (36) con_exp -> . con_term
+    (42) con_term -> . ID
+    (43) con_term -> . NUMBER
+    (44) con_term -> . LPAREN con_exp RPAREN
+    (45) con_term -> . FALSE
+    (46) con_term -> . TRUE
+
+    ID              shift and go to state 44
+    NUMBER          shift and go to state 45
+    LPAREN          shift and go to state 41
+    FALSE           shift and go to state 46
+    TRUE            shift and go to state 47
+
+    con_exp                        shift and go to state 119
+    con_term                       shift and go to state 43
+
+state 114
+
+    (55) for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN . LBRAC stmt_list RBRAC
+
+    LBRAC           shift and go to state 120
+
+
+state 115
+
+    (10) include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .
+
+    SHARP           reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    ID              reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    IF              reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    WHILE           reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    DO              reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    FOR             reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    INT             reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    FLOAT           reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    CHAR            reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    $end            reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+    RBRAC           reduce using rule 10 (include -> SHARP INCLUDE ALBRAC ID DOT ID ARBRAC .)
+
+
+state 116
+
+    (50) if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .
+
+    SHARP           reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    ID              reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    IF              reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    WHILE           reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    DO              reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    FOR             reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    INT             reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    FLOAT           reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    CHAR            reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    $end            reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+    RBRAC           reduce using rule 50 (if -> IF LPAREN con_exp RPAREN LBRAC stmt_list others_if .)
+
+
+state 117
+
+    (51) others_if -> RBRAC .
+    (52) others_if -> RBRAC . ELSE LBRAC stmt_list RBRAC
+
+    SHARP           reduce using rule 51 (others_if -> RBRAC .)
+    ID              reduce using rule 51 (others_if -> RBRAC .)
+    IF              reduce using rule 51 (others_if -> RBRAC .)
+    WHILE           reduce using rule 51 (others_if -> RBRAC .)
+    DO              reduce using rule 51 (others_if -> RBRAC .)
+    FOR             reduce using rule 51 (others_if -> RBRAC .)
+    INT             reduce using rule 51 (others_if -> RBRAC .)
+    FLOAT           reduce using rule 51 (others_if -> RBRAC .)
+    CHAR            reduce using rule 51 (others_if -> RBRAC .)
+    $end            reduce using rule 51 (others_if -> RBRAC .)
+    RBRAC           reduce using rule 51 (others_if -> RBRAC .)
+    ELSE            shift and go to state 121
+
+
+state 118
+
+    (53) while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .
+
+    SHARP           reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    ID              reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    IF              reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    WHILE           reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    DO              reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    FOR             reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    INT             reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    FLOAT           reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    CHAR            reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    $end            reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+    RBRAC           reduce using rule 53 (while -> WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC .)
+
+
+state 119
+
+    (54) do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp . RPAREN
+    (32) con_exp -> con_exp . ALBRAC other_con_exp
+    (33) con_exp -> con_exp . ARBRAC other_con_exp
+    (34) con_exp -> con_exp . EQUALS EQUALS other_con_exp
+    (35) con_exp -> con_exp . NOT other_con_term2
+
+    RPAREN          shift and go to state 122
+    ALBRAC          shift and go to state 70
+    ARBRAC          shift and go to state 71
+    EQUALS          shift and go to state 72
+    NOT             shift and go to state 73
+
+
+state 120
+
+    (55) for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC . stmt_list RBRAC
+    (1) stmt_list -> . stmt
+    (2) stmt_list -> . stmt_list stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt_list                      shift and go to state 123
+    stmt                           shift and go to state 2
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 121
+
+    (52) others_if -> RBRAC ELSE . LBRAC stmt_list RBRAC
+
+    LBRAC           shift and go to state 124
+
+
+state 122
+
+    (54) do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .
+
+    SHARP           reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    ID              reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    IF              reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    WHILE           reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    DO              reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    FOR             reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    INT             reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    FLOAT           reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    CHAR            reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    $end            reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+    RBRAC           reduce using rule 54 (do_while -> DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN .)
+
+
+state 123
+
+    (55) for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list . RBRAC
+    (2) stmt_list -> stmt_list . stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    RBRAC           shift and go to state 125
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt                           shift and go to state 20
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 124
+
+    (52) others_if -> RBRAC ELSE LBRAC . stmt_list RBRAC
+    (1) stmt_list -> . stmt
+    (2) stmt_list -> . stmt_list stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt_list                      shift and go to state 126
+    stmt                           shift and go to state 2
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 125
+
+    (55) for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .
+
+    SHARP           reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    ID              reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    IF              reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    WHILE           reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    DO              reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    FOR             reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    INT             reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    FLOAT           reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    CHAR            reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    $end            reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+    RBRAC           reduce using rule 55 (for -> FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC .)
+
+
+state 126
+
+    (52) others_if -> RBRAC ELSE LBRAC stmt_list . RBRAC
+    (2) stmt_list -> stmt_list . stmt
+    (3) stmt -> . include
+    (4) stmt -> . vardec
+    (5) stmt -> . assaign
+    (6) stmt -> . if
+    (7) stmt -> . while
+    (8) stmt -> . do_while
+    (9) stmt -> . for
+    (10) include -> . SHARP INCLUDE ALBRAC ID DOT ID ARBRAC
+    (17) vardec -> . types ID vardec2
+    (47) assaign -> . ID EQUALS other_assaign
+    (50) if -> . IF LPAREN con_exp RPAREN LBRAC stmt_list others_if
+    (53) while -> . WHILE LPAREN con_exp RPAREN LBRAC stmt_list RBRAC
+    (54) do_while -> . DO LBRAC stmt_list RBRAC WHILE LPAREN con_exp RPAREN
+    (55) for -> . FOR LPAREN foropt1 foropt2 foropt3 RPAREN LBRAC stmt_list RBRAC
+    (11) types -> . INT
+    (12) types -> . FLOAT
+    (13) types -> . CHAR
+
+    RBRAC           shift and go to state 127
+    SHARP           shift and go to state 10
+    ID              shift and go to state 11
+    IF              shift and go to state 13
+    WHILE           shift and go to state 14
+    DO              shift and go to state 15
+    FOR             shift and go to state 16
+    INT             shift and go to state 17
+    FLOAT           shift and go to state 18
+    CHAR            shift and go to state 19
+
+    stmt                           shift and go to state 20
+    include                        shift and go to state 3
+    vardec                         shift and go to state 4
+    assaign                        shift and go to state 5
+    if                             shift and go to state 6
+    while                          shift and go to state 7
+    do_while                       shift and go to state 8
+    for                            shift and go to state 9
+    types                          shift and go to state 12
+
+state 127
+
+    (52) others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .
+
+    SHARP           reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    ID              reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    IF              reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    WHILE           reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    DO              reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    FOR             reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    INT             reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    FLOAT           reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    CHAR            reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    $end            reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+    RBRAC           reduce using rule 52 (others_if -> RBRAC ELSE LBRAC stmt_list RBRAC .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 33 resolved using rule (values -> NUMBER)
+WARNING: rejected rule (factor -> NUMBER) in state 33

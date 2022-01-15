@@ -1,0 +1,414 @@
+##################### EX0 ##########A+###############
+
+
+#include <stdio.h>
+
+int x;
+char x = 'c';
+char r;
+r = 'z';
+
+x = x + 2;
+
+if ((x) >= (y) ) {
+     z=12+3*x+y; 
+}
+else {
+    c = 32;
+}
+
+while(true){
+    x=x/2;
+}
+
+do{
+    z=z+x*u;
+}
+while(true)
+for(int i=0; i<12; i=i+1;){
+    c=x;
+}
+
+
+
+################### EX1 ##########################
+
+#include <stdio.h>
+
+int x;
+int z = 14;
+char x = 'num';
+
+int f = x + ( z ) ^ 2;
+x = x / 15;
+
+if ((x) >= 0 ) {
+     z=12+3*x; 
+}
+else {
+    r = 32;
+}
+
+while(true){
+    x=x*2;
+    z=z/3;	
+}
+
+do{
+    
+}
+while(true)
+for(int i=0; i<12; i=i+1;){
+    c=x;
+    z=z+x*u;
+}
+
+
+###################### EX2 ###########+A#############
+
+
+
+#include <stdio.h>
+
+int x;
+float y=4;
+float z = 122.53;
+char x = 'c';
+char r;
+r = 'z';
+
+int f = x ^ 2;
+x = x / 3;
+
+if ((x) >= (y) ) {
+     z=45+3*x; 
+}
+else {
+    c = 32;
+}
+
+for(int i=0; i<12; i=i+1;){
+    c=x;
+}
+
+
+###################### EX3 ########+A#################
+
+#include <stdio.h>
+
+int x;
+float y=4;
+float z = 122.53;
+char x = 'c';
+char r;
+r = 'z';
+
+float f = x + ( z + y ) ^ 2;
+x = x + 2;
+
+if ((x) >= (y) ) {
+     z=12+3*x+y; 
+}
+else {
+    c = 32;
+}
+
+while(true){
+    x=x/2;
+}
+
+do{
+    z=z+x*u;
+}
+while(true)
+for(int i=0; i<12; i=i+1;){
+    c=x;
+}
+
+
+
+######################## EX4 ########################
+
+#include <stdio.h>
+
+int x = 0;
+int z = 53;
+char x = 'c';
+char r;
+r = 'z';
+
+float f = x + ( z ) ^ 2;
+x = x + 2;
+
+if ((x) <= (z) ) {
+     z=x^2+3*x; 
+}
+else {
+    z = 0;
+}
+
+while(z>3){
+    x=x/2;
+    z=z+1
+}
+
+######################## EX5 #############################
+
+#include <stdio.h>
+
+int x,z,y;
+
+float f = x + ( z + y ) ^ 4 / 3;
+
+do{
+    z=z+x*f;
+}
+while(z>0)
+for(int i=0; i<12; i=i+1;){
+    c=x;
+    for(int k=1; k<24; k=k+1;){
+        z=c+k;
+
+}
+
+
+######################## EX6 #############################
+
+#include <stdio.h>
+#include <math.h>
+
+int a,b;
+float c;
+float c = a/2 + 3*b;
+
+if(c>b){
+	for(int i=0; i<12; i=i+1;){
+    	c=x;
+	if(c>7){
+    	   for(int k=1; k<24; k=k+1;){
+           z=c/k+3;
+	   }
+
+	}
+	else{
+	break;
+	}
+	
+}
+
+
+######################## EX7 #############################
+
+#include <stdio.h>
+#include <time.h>
+
+int m,h;
+int c;
+int b=1;
+
+if(b>0){
+	for(int i=0; i<60; i=i+1;){
+    	s=s+1;
+	if(s>59){
+    	   for(int k=0; k<60; k=k+1;){
+           m=m+1;
+           if(m>59){
+    	   for(int j=0; j<24; j=j+1;){
+           h=h+1;
+	   if(h=24){
+             break; }
+	   }
+	   
+	}
+	   }
+	   
+	}
+	else{
+	break;
+	}
+	
+}
+
+
+
+######################## EX8 #############################
+
+#include <stdio.h>
+#include <math.h>
+
+int x,z;
+
+int f = x + 4 / 13;
+do{
+    x=x+x*f;
+}
+while(z>0)
+    c=x;
+    for(int j=1; j<13; j=j+1;){
+        z=c+5;
+
+}
+
+
+
+
+######################## EX9 #############################
+
+#include <math.h>
+#include <stdio.h>
+
+int x;
+float y=4;
+float z = 17.83;
+char r;
+r = 'z';
+
+float f = x + ( z + y ) ^ 2;
+x = x + 2;
+
+if ((x) >= (y) ) {
+     z=1-36*x; 
+     x=4-23y;
+}
+else {
+    c = 32;
+}
+
+while(x>3){
+    x=x/2;
+}
+
+
+
+######################## EX10 ############################
+
+
+#include <math.h>
+#include <stdio.h>
+
+int a,x;
+float c = a/2 + 34*x + x^2;
+
+if(c>b){
+	for(int i=0; i<12; i=i+1;){
+    	c=x;
+        a=c-12/3;
+	if(f>7){
+    	   for(int k=1; k<24; k=k+1;){
+           z=c/k+3;
+	   }
+	}
+	else{
+	 break;
+	}
+	
+}
+
+
+######################## EX11 #############################
+
+#include <stdio.h>
+#include <math.h>
+
+int x,z,y;
+
+do{
+    z=z+x*f;
+}
+while(z>0)
+for(int i=0; i<16; i=i+3;){
+    c=x;
+    for(int k=1; k<12; k=k-1;){
+        z=c*k;
+	f=z+2
+
+}
+
+if(z>10){
+	f = x + ( z + y ) ^ 4 / 3;
+}
+else{
+break;
+}
+
+######################## EX12 #############################
+
+#include <stdio.h>
+#include <math.h>
+
+int x,z,y;
+float f;
+
+if(z>0)
+for(int i=0; i<16; i=i+3;){
+    c=x;
+
+}
+
+if(x>10){
+	f = x + ( z + y ) ^ 4 / 3;
+}
+else{
+break;
+}
+
+
+######################## EX13 #############################
+
+#include <math.h>
+
+int x,z,y;
+float s;
+char s = 'number'
+
+if(z>0)
+for(int i=0; i<16; i=i+3;){
+    c=x;
+    f = x + ( z + y ) ^ 4 / 3;
+
+}
+
+
+######################## EX14 #############################
+
+#include <math.h>
+
+int x,b;
+float s;
+char s = 'number'
+
+for(int i=0; i<16; i=i+3;){
+    c=x-12;
+    f = x-1*b;
+	if(x>2){
+	break;	
+	}
+
+}
+
+
+
+######################## EX15 #############################
+#include <math.h>
+#include <stdio.h>
+
+int x;
+float y=4;
+float z = 172.09;
+char r;
+r = 'z';
+
+while ((x) >= (y) ) {
+     z=17-36*x; 
+     x=4-2y;
+}
+else {
+    c = 32;
+}
+
+while(x>3){
+    x=x/12+1;
+    else{    
+     x=x/3;
+    }
+}
